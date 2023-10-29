@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import useSWR from "swr";
+import Head from "next/head";
 import { getFilteredEvents } from "../../helpers/api-util";
 import EventList from "../../components/events/event-list";
 import ResultsTitle from "../../components/events/results-title";
@@ -91,6 +92,13 @@ export default ({ hasError, events, year, month }) => {
 
   return (
     <>
+      <Head>
+        <title>Filtered events</title>
+        <meta
+          name="description"
+          content={`All events for ${numYear}/${numMonth}`}
+        />
+      </Head>
       <ResultsTitle date={date} />
       <EventList items={filteredEvents} />
     </>
